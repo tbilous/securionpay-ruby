@@ -3,6 +3,7 @@ require 'spec_helper'
 describe SecurionPay::Builders::PathBuilder do
   let(:customer_id) { 'some_customer_id' }
   let(:card_id) { 'some_card_id' }
+  let(:subscription_id) { 'some_subscription_id' }
   let(:blacklist_rule_id) { 'some_blacklist_rule_id' }
   let(:cross_sale_offer_id) {'some_cross_sale_offer_id' }
   let(:customer_record_type) {'some_customer_record_type' }
@@ -104,6 +105,18 @@ describe SecurionPay::Builders::PathBuilder do
     it 'gets path without cross_sale_offer_id' do
       result = subject.build_customer_records_path
       expect(result).to eq('/customer-records')
+    end
+  end
+
+  describe '.build_subscriptions_path' do
+    it 'gets path with subscription_id' do
+      result = subject.build_subscriptions_path(customer_id, subscription_id)
+      expect(result).to eq('/customers/some_customer_id/subscriptions/some_subscription_id')
+    end
+
+    it 'gets path without subscription_id' do
+      result = subject.build_subscriptions_path(customer_id)
+      expect(result).to eq('/customers/some_customer_id/subscriptions')
     end
   end
 end
