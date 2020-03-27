@@ -8,6 +8,7 @@ require 'securionpay/cross_sale_offers'
 require 'securionpay/customer_records'
 require 'securionpay/customers'
 require 'securionpay/version'
+require 'securionpay/subscriptions'
 
 require 'securionpay/builders/path_builder'
 

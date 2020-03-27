@@ -61,6 +61,14 @@ module SecurionPay
           '/customer-records'.freeze
         end
       end
+
+      def self.build_subscriptions_path(customer_id, subscription_id = nil)
+        if subscription_id
+          "/customers/#{customer_id}/subscriptions/#{subscription_id}"
+        else
+          "/customers/#{customer_id}/subscriptions"
+        end
+      end
     end
   end
 end
